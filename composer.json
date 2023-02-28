@@ -1,0 +1,60 @@
+{
+  "name": "plugin/openpub-base",
+  "description": "OpenPub base plugin",
+  "type": "wordpress-plugin",
+  "config": {
+    "preferred-install": "dist",
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  },
+  "authors": [
+    {
+      "name": "Yard | Digital Agency",
+      "email": "info@yard.nl",
+      "homepage": "https://www.yard.nl"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": "^7.0|^8.0",
+    "wpackagist-plugin/elasticpress": "^4.0",
+    "yahnis-elsts/plugin-update-checker": "^5.0"
+  },
+  "require-dev": {
+    "10up/wp_mock": "~0.5",
+    "mockery/mockery": "^1.5",
+    "phpunit/phpunit": "~8.0 | ~9.0",
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "phpstan/phpstan": "^1.6",
+    "symfony/var-dumper": "^5.0",
+    "szepeviktor/phpstan-wordpress": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "OWC\\OpenPub\\Base\\": "./src/Base"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OWC\\OpenPub\\Tests\\": "./tests/Unit"
+    }
+  },
+  "scripts": {
+    "format": "vendor/bin/php-cs-fixer fix",
+    "phpstan": "./vendor/bin/phpstan analyse",
+    "test": [
+      "@unit"
+    ],
+    "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always",
+    "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always --coverage-html ./tests/coverage",
+    "package": "chmod +x ./bin/package.sh && ./bin/package.sh"
+  }
+}
