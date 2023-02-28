@@ -118,7 +118,7 @@ class Plugin
 
         try {
             $updater = PucFactory::buildUpdateChecker(
-                'https://github.com/OpenWebconcept/plugin-openpub-base/',
+                'https://github.com/SimonvanWijhe/wp-plugin-release-test',
                 $this->rootPath . '/openpub-base.php',
                 'openpub-base'
             );
