@@ -125,6 +125,7 @@ class Plugin
 
             $updater->getVcsApi()->enableReleaseAssets();
         } catch (\Throwable $e) {
+			dd($e->getMessage());
             error_log($e->getMessage());
         }
     }
